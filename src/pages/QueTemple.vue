@@ -4,7 +4,7 @@
     <!-- {{formData}}  -->
     <el-form :rules="rules" v-model="formData">
     <div>
-        <h1>{{formData.title}}</h1>
+        <h1>{{formData.papertitle}}</h1>
 
         <div v-for="(question,i_q) in formData.questions"
           :key="i_q">
@@ -12,46 +12,47 @@
                 <p>
                     <span style="color:red;">{{question.must==true?"*":""}}</span> 
                     {{i_q+1}} . 
-                    {{question.title}}
-                    <span style="color:gray;">[{{question.type==0?"单选题":(question.type==1?"多选题":"填空题")}}]</span>
+                    {{question.questiontitle}}
+                    <span style="color:gray;">[{{question.topicid==0?"单选题":(question.topicid==1?"多选题":"填空题")}}]</span>
                 </p>
                 <!-- 单选 -->
-                <div v-if="question.type==0">
+                <div v-if="question.topicid==0">
                     <p style="color:red">{{singleWaring(question)}}</p>
                     <el-radio-group v-model="question.ans" @change="rela(i_q)">
                         <div v-for="(option,i_o) in question.options"
                           :key="i_o">
                             <el-radio :label="i_o" >
-                                {{option.content}} 
+                                {{option.scontent}} 
                             </el-radio>
                         </div>
                     </el-radio-group>
                 </div>
                 <!-- 多选 -->
-                <div v-if="question.type==1">
+                <div v-if="question.topicid==1">
                     <p style="color:red" >{{multWaring(question)}}</p>
                     <el-checkbox-group v-model="question.ans">
                         <div v-for="(option,i_o) in question.options"
                         :key="i_o">
                             <el-checkbox :label="i_o">
-                                {{option.content}}
+                                {{option.scontent}}
                             </el-checkbox>
                         </div>
                     </el-checkbox-group>
                 </div>
                 <!-- 填空 -->
-                <div v-if="question.type==2">
+                <div v-if="question.topicid==2">
                     <p style="color:red" >{{blankWarning(question)}}</p>
                     <el-form-item prop="content">
                         <el-input 
                         type="textarea"
-                        v-model="question.content" />
+                        v-model="question.scontent" />
                     </el-form-item>
                 </div>
             </div>
         </div>
         <el-button 
         type="primary" plain
+        class="big-btn"
         @click="onSubmit()">
             提交
         </el-button>
@@ -71,7 +72,7 @@ import api from "../fetch/api"
 export default {
     data(){
         return{
-            id:null,// 获取链接传来的问卷id，暂时用null代替
+            questionid:null,// 获取链接传来的问卷id，暂时用null代替
             rules:{
                 content:[{max:51,message:'字数不能多于51',trigger:'blur'}],
             },
@@ -124,7 +125,7 @@ export default {
         // 填空题必填提示
         blankWarning:function(question){
             return function(question){
-                if(question.show&&question.must&&question.content=="")
+                if(question.show&&question.must&&question.scontent=="")
                 {
                     question.err=true;
                     return "此题必答";
@@ -140,18 +141,18 @@ export default {
         {
             var val = this.formData.questions[i_q];
             // 如果题目有关联
-            for(var i=0;i<val.options[val.ans].to.length;i++)
+            for(var i=0;i<val.options[val.ans].goquestion.length;i++)
             {
-                this.formData.questions[val.options[val.ans].to[i]].show=true;
+                this.formData.questions[val.options[val.ans].goquestion[i]].show=true;
             }
-            if(val.options[val.ans].to.length==0)
+            if(val.options[val.ans].goquestion.length==0)
             {
                 // 隐藏其他选项关联的题目
                 for(var j=0;j<val.options.length;j++)
                 {
-                    for(var i=0;i<val.options[j].to.length;i++)
+                    for(var i=0;i<val.options[j].goquestion.length;i++)
                     {
-                        this.formData.questions[val.options[j].to[i]].show=false;
+                        this.formData.questions[val.options[j].goquestion[i]].show=false;
                     }
                 }
             }
