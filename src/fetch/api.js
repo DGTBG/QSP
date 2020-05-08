@@ -129,5 +129,12 @@ export default {
     DeleteQuestionnaire(params)
     {
       return fetch('/delete-questionnaire',params);
+    },
+    /**
+     * 交叉分析
+     */
+    CrossAnalysis(params)
+    {
+      return fetch('/cross-analysis',params);
     }
 }
