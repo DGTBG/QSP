@@ -1,6 +1,6 @@
 /* 居中显示div，当屏幕宽度小于1000px时，宽度拉满 */
 .center-plane{
-    margin: auto;
+    margin:0 auto;
     width: 100%;
     border: 1px solid white;
 }
@@ -14,9 +14,9 @@
 }
 
 /* 编辑页面的锚点元素a的样式：上移、下移、编辑、删除... */
-.edit-a{
+.left-float{
     float:right;
-    margin: 0 3px 5px 3px;
+    margin: 10px 3px 5px 3px;
 }
 
 /* 组件前说明文字 */
@@ -30,9 +30,27 @@
     margin: 25px 0;
 }
 
-/* 按钮拉满 */
-.big-btn{
+/* 拉满 */
+.fill{
     width: 100%;
     
 }
+/* 大一些的行距 */
+.row-spacing{
+    margin: 10px 0;
+}
 
+.red-border{
+    border: 1px solid red; 
+}
+
+.my-card{
+    background-color: #EBEEF5;
+    padding:10px;
+    border: 1px solid #606266; 
+    height: auto !important ;
+}
+
+.center{
+    margin: auto;
+}

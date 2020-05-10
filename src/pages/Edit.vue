@@ -14,7 +14,7 @@
         </el-col>
         <el-col :xs="12" :sm="12" :md="3" :lg="3" :xl="5">
             <el-button 
-            class="big-btn"
+            class="fill"
             type="primary" plain 
             @click="toPreview()">
                 预览
@@ -22,7 +22,7 @@
         </el-col>
         <el-col :xs="12" :sm="12" :md="4" :lg="4" :xl="5">
             <el-button 
-            class="big-btn"
+            class="fill"
             type="primary"
             @click="onSubmit(formData)">
                 保存问卷
@@ -31,13 +31,13 @@
         </el-row>
         <el-row :gutter="10">
             <el-col :xs="8" :sm="8" :md="8" :lg="8" :xl="8">
-            <el-button @click="add_question(0)" :disabled="formData.questions.length>=30" class="big-btn">添加单选</el-button>
+            <el-button @click="add_question(0)" :disabled="formData.questions.length>=30" class="fill">添加单选</el-button>
             </el-col>
             <el-col :xs="8" :sm="8" :md="8" :lg="8" :xl="8">
-            <el-button @click="add_question(1)" :disabled="formData.questions.length >=30" class="big-btn">添加多选</el-button>
+            <el-button @click="add_question(1)" :disabled="formData.questions.length >=30" class="fill">添加多选</el-button>
             </el-col>
             <el-col :xs="8" :sm="8" :md="8" :lg="8" :xl="8">
-            <el-button @click="add_question(2)" :disabled="formData.questions.length>=30" class="big-btn">添加填空</el-button>
+            <el-button @click="add_question(2)" :disabled="formData.questions.length>=30" class="fill">添加填空</el-button>
             </el-col>
         </el-row>
         </div>
@@ -63,12 +63,12 @@
                     </el-form-item>
                 </div>
                 <div>
-                    <a @click="question_moveLast(i_q)"  class="edit-a">最后</a>
-                    <a @click="question_moveFirst(i_q)"  class="edit-a">最前</a>
-                    <a @click="question_moveDown(i_q)"   class="edit-a">下移</a>
-                    <a @click="question_moveUp(i_q)" class="edit-a">上移</a>
-                    <a @click="del_question(i_q)"  class="edit-a">删除</a>
-                    <a @click="show_edit_panel(i_q)"  class="edit-a">{{question.show?"隐藏":"编辑"}}</a>
+                    <a @click="question_moveLast(i_q)"  class="left-float">最后</a>
+                    <a @click="question_moveFirst(i_q)"  class="left-float">最前</a>
+                    <a @click="question_moveDown(i_q)"   class="left-float">下移</a>
+                    <a @click="question_moveUp(i_q)" class="left-float">上移</a>
+                    <a @click="del_question(i_q)"  class="left-float">删除</a>
+                    <a @click="show_edit_panel(i_q)"  class="left-float">{{question.show?"隐藏":"编辑"}}</a>
                 </div>
             </el-card>
 

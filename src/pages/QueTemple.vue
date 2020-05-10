@@ -52,7 +52,7 @@
         </div>
         <el-button 
         type="primary" plain
-        class="big-btn"
+        class="fill"
         @click="onSubmit()">
             提交
         </el-button>

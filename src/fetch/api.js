@@ -131,10 +131,17 @@ export default {
       return fetch('/delete-questionnaire',params);
     },
     /**
-     * 交叉分析
+     * 返回详细作答信息以作数据分析
      */
-    CrossAnalysis(params)
+    GetResultToAnalysis(params)
     {
-      return fetch('/cross-analysis',params);
+      return fetch('/get-analysis',params);
+    },
+    /**
+     * 返回交叉分析结果
+     */
+    GetCrossOverAnalysis(params)
+    {
+      return fetch('/get-cross-analysis',params);
     }
 }

@@ -7,7 +7,7 @@ import Edit from '@/pages/Edit'
 import Preview from '@/pages/Preview'
 import Answer from '@/pages/Answer'
 import Done from '@/pages/Done'
-import Analysis from '@/pages/Analysis'
+import CrossOverAnalysis from '@/pages/CrossOverAnalysis'
 
 
 Vue.use(Router)
@@ -36,7 +36,7 @@ export default new Router({
         requireAuth: true,//以这个字段来说明这个路由是否需要登录认证才能访问
     }
     },
- /*    {
+ /* {
       path: '/unconnected',
       name: 'Unconnected',
       component: Unconnected
@@ -58,9 +58,9 @@ export default new Router({
     }
     },*/
     {
-      path: '/analysis',
-      name: 'Analysis',
-      component: Analysis,
+      path: '/crossoveranalysis/:paperid',
+      name: 'CrossOverAnalysis',
+      component: CrossOverAnalysis,
       meta: {
         requireAuth: true,//以这个字段来说明这个路由是否需要登录认证才能访问
     }
@@ -97,10 +97,6 @@ export default new Router({
         requireAuth: true,//以这个字段来说明这个路由是否需要登录认证才能访问
     }
     }, 
-
-
-
-
   ]
 })
 
