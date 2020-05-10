@@ -96,8 +96,8 @@
 
 
 <script>
-// import _get_analysis from "./json/get-analysis.json";// 引入模拟后端通过/get-analysis 传给前端的数据
-// import _get_cross_over_analysis from "./json/get-cross-over-analysis.json";// 引入模拟后端通过/get-analysis 传给前端的数据
+import _get_analysis from "./json/get-analysis.json";// 引入模拟后端通过/get-analysis 传给前端的数据
+import _get_cross_over_analysis from "./json/get-cross-over-analysis.json";// 引入模拟后端通过/get-analysis 传给前端的数据
 
 export default {
   data () {
@@ -115,6 +115,14 @@ export default {
       },
       option:{},
       myChart:null,
+    }
+  },
+   mounted() {
+    window.onresize = () => {
+      if(this.myChart)
+      {
+        this.myChart.resize();
+      }
     }
   },
   computed:{
